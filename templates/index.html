@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CGPA / GPA / Percentage Converter</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Academic Score Converter</h2>
+    <form method="POST">
+      <input type="number" step="any" name="value" placeholder="Enter value" required>
+
+      <select name="conversion" required>
+        <option value="cgpa_to_percent">CGPA → Percentage</option>
+        <option value="percent_to_cgpa">Percentage → CGPA</option>
+        <option value="gpa_to_percent">GPA → Percentage</option>
+        <option value="percent_to_gpa">Percentage → GPA</option>
+        <option value="average_to_percent">Average Marks → Percentage</option>
+      </select>
+
+      <button type="submit">Convert</button>
+    </form>
+
+    {% if result %}
+      <div class="result">
+        <h3>Result: {{ result }}</h3>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
