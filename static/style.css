@@ -22,6 +22,17 @@ body, html {
   text-align: center;
 }
 
+@media (max-width: 480px) {
+  input, select, button {
+    width: 100%;
+  }
+  
+  .container {
+    padding: 20px 15px;
+  }
+}
+
+
 /* Heading */
 .container h2 {
   margin-bottom: 20px;
