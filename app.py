@@ -1,8 +1,14 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 import os
 
 app = Flask(__name__)
 
+# Route to serve the ads.txt file
+@app.route('/ads.txt')
+def ads_txt():
+    return send_from_directory('.', 'ads.txt')
+
+# Main converter route
 @app.route('/', methods=['GET', 'POST'])
 def index():
     result = ""
@@ -23,13 +29,11 @@ def index():
                 result = f"{value:.2f} %"
             else:
                 result = "Invalid conversion selected."
-
         except ValueError:
             result = "Please enter a valid number."
 
     return render_template('index.html', result=result)
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 10000))  # Read PORT from environment
-    app.run(host='0.0.0.0', port=port)         # Bind to all interfaces
-
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0', port=port)
